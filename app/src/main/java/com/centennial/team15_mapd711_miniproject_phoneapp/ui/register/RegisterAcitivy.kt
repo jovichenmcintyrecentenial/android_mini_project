@@ -1,3 +1,8 @@
+package com.centennial.team15_mapd711_miniproject_phoneapp.ui.register
+
+import CustomerModel
+import UserInputException
+import Utils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -41,14 +46,14 @@ class RegisterAcitivy : AppCompatActivity() {
 
     //validate edit text information if there is an issue throw an exception
     private fun isDataValid(): Boolean {
-        Utils.emptyValidation(username,"Please enter a username")
-        Utils.emptyValidation(firstname,"Please enter a firstname")
-        Utils.emptyValidation(lastname,"Please enter a lastname")
-        Utils.emptyValidation(address,"Please enter a address")
-        Utils.emptyValidation(city,"Please enter a city")
-        Utils.emptyValidation(postalCode,"Please enter a postalCode")
-        Utils.emptyValidation(password,"Please enter a password")
-        Utils.emptyValidation(rePassword,"Please re-enter password")
+        Utils.emptyValidation(username, "Please enter a username")
+        Utils.emptyValidation(firstname, "Please enter a firstname")
+        Utils.emptyValidation(lastname, "Please enter a lastname")
+        Utils.emptyValidation(address, "Please enter a address")
+        Utils.emptyValidation(city, "Please enter a city")
+        Utils.emptyValidation(postalCode, "Please enter a postalCode")
+        Utils.emptyValidation(password, "Please enter a password")
+        Utils.emptyValidation(rePassword, "Please re-enter password")
 
         //password check if match
         if(rePassword.text.toString() != password.text.toString()){
@@ -74,7 +79,15 @@ class RegisterAcitivy : AppCompatActivity() {
                 val password = this.password.text.toString()
 
                 //create new customer model
-                val customerModel = CustomerModel(username,firstname,lastname,address,city,postalCode,password)
+                val customerModel = CustomerModel(
+                    username,
+                    firstname,
+                    lastname,
+                    address,
+                    city,
+                    postalCode,
+                    password
+                )
                 //use view model to insert data in database
                 registerViewModel.insertCustomerData(this,customerModel)
 
@@ -87,7 +100,7 @@ class RegisterAcitivy : AppCompatActivity() {
         //catch  and display user input exception
         catch (e: UserInputException) {
             //display exception message
-            Utils.showMessage(this,e.message.toString())
+            Utils.showMessage(this, e.message.toString())
         }
     }
 

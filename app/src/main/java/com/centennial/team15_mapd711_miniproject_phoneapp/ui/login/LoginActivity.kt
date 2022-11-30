@@ -14,7 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
 import com.centennial.team15_mapd711_miniproject_phoneapp.models.Database
-import com.centennial.team15_mapd711_miniproject_phoneapp.ui.r.RegisterAcitivy
+import com.centennial.team15_mapd711_miniproject_phoneapp.ui.register.RegisterAcitivy
 
 class LoginActivity : AppCompatActivity() {
 
