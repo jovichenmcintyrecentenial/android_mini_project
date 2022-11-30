@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="page_margin">40dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="bottom_margin_instruction">20dp</dimen>
+    <dimen name="page_margins">50dp</dimen>
+    <dimen name="labelTextSize">17sp</dimen>
+    <dimen name="page_margin2">20dp</dimen>
+    <dimen name="image_margin">15dp</dimen>
+</resources>

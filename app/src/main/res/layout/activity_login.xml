@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/page_margin"
+    android:layout_marginRight="@dimen/page_margin"
+    android:layout_marginTop="@dimen/page_margin"
+   >
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/page_margin"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_logo" />
+
+    <TextView
+        style="@style/checkout_text_view_style"
+        android:text="@string/email" />
+
+    <EditText
+        android:id="@+id/uname"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:hint="@string/enter_email_here"
+        android:inputType="textPersonName" />
+
+    <TextView
+        style="@style/checkout_text_view_style"
+        android:text="@string/password" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:inputType="textPassword"
+        android:hint="@string/enter_password_here"
+        />
+
+    <Button
+        android:id="@+id/login"
+        android:text="@string/login"
+        android:onClick="onLogin"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        style="@style/button" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="20dp">
+            <TextView
+                android:gravity="top"
+                android:layout_gravity="top"
+                android:id="@+id/textView2"
+                android:textSize="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/don_t_an_account"
+                android:layout_marginRight="@dimen/space"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_toEndOf="@+id/textView2"
+                android:autoLink="all"
+                android:linksClickable="false"
+                android:selectAllOnFocus="false"
+                android:text="@string/sign_up_text"
+                android:textColor="#328C28"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/register"
+                android:background="#03324FE1"
+                android:backgroundTint="#03324FE1"
+                android:layout_height="20dp"
+                android:onClick="register"
+                android:layout_width="match_parent"
+              />
+        </RelativeLayout>
+
+
+
+</LinearLayout>
+</ScrollView>
