@@ -17,25 +17,9 @@ class LoginViewModel: ViewModel() {
     }
 
     fun getUser(context: Context, username:String, password:String){
-        FirebaseApp.initializeApp(context)
-        val db = Firebase.firestore
-        val user = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
-            "born" to 1815
-        )
-
 
         CoroutineScope(Dispatchers.IO).launch {
-//            liveCustomerData.postValue( CustomerRepository.passwordCheck(context, username, password))
-            db.collection("users")
-                .add(user)
-                .addOnSuccessListener { documentReference ->
-                    Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
-                }
-                .addOnFailureListener { e ->
-                    Log.w("TAG", "Error adding document", e)
-                }
+            liveCustomerData.postValue( CustomerRepository.passwordCheck(context, username, password))
         }
     }
 

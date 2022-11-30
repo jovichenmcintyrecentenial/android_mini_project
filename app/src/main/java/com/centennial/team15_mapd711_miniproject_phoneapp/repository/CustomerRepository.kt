@@ -62,13 +62,22 @@ class CustomerRepository {
 
         }
         //check customer login credentials
-        fun passwordCheck(context: Context, username: String, password:String):CustomerModel? {
-//            phoneStoreDatabase = getDB(context)
-//
-//            var customer = phoneStoreDatabase!!.phonestoreDao().passwordCheck(username, password)
-//            loginCustomer.postValue(customer)
-//
-//            return customer
+        suspend fun passwordCheck(context: Context, username: String, password:String):CustomerModel? {
+
+            var quertSnapshot = Database.getDB()!!.collection(collection)
+                .whereEqualTo("password", password)
+                .whereEqualTo("email",username)
+                .get().await()
+
+            if(!quertSnapshot.isEmpty){
+                 var customer = quertSnapshot.toObjects(CustomerModel::class.java)[0]
+                loginCustomer.postValue(customer)
+                return customer
+
+
+            }
+
+
             return null
         }
 

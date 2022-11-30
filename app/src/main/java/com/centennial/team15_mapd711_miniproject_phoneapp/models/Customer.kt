@@ -1,12 +1,12 @@
 
 
 data class CustomerModel(
-    var email: String,
-    var firstname: String,
-    var lastname: String,
-    var address: String,
-    var city: String,
-    var postal: String,
-    var password: String,
+    var email: String? = null,
+    var firstname: String? = null,
+    var lastname: String? = null,
+    var address: String? = null,
+    var city: String? = null,
+    var postal: String? = null,
+    var password: String? = null,
 )
 
