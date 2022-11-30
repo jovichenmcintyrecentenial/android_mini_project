@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.register.RegisterAcitivy">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/page_margin"
+    android:layout_marginRight="@dimen/page_margin"
+    android:layout_marginTop="@dimen/page_margin"
+    tools:context=".ui.register.RegisterAcitivy">
+
+
+
+
+    <TextView
+        android:id="@+id/fname_label"
+        style="@style/checkout_text_view_style"
+        android:text="@string/firstname" />
+
+    <EditText
+        android:id="@+id/firstname"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:hint="@string/enter_firstname_here"
+        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/lname_label"
+        style="@style/checkout_text_view_style"
+        android:text="@string/lastname" />
+
+    <EditText
+        android:id="@+id/lastname"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:hint="@string/enter_lastname_here"
+        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/uname_label"
+        style="@style/checkout_text_view_style"
+        android:text="Email" />
+
+    <EditText
+        android:id="@+id/uname"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:hint="@string/enter_username_here"
+        android:inputType="textPersonName" />
+    <TextView
+        style="@style/checkout_text_view_style"
+        android:text="@string/address" />
+
+    <EditText
+        android:id="@+id/address"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:hint="@string/enter_address_here"
+        android:inputType="textPersonName" />
+    <TextView
+        style="@style/checkout_text_view_style"
+        android:text="@string/city" />
+
+    <EditText
+        android:id="@+id/city"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:hint="@string/enter_city_here"
+        android:inputType="textPersonName" />
+    <TextView
+        style="@style/checkout_text_view_style"
+        android:text="@string/postal_code" />
+
+    <EditText
+        android:id="@+id/postal"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:hint="@string/enter_postal_code_here"
+        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/password1_label"
+        style="@style/checkout_text_view_style"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/password1"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:inputType="textPassword"
+        android:hint="Enter password here"
+        />
+
+    <TextView
+        android:id="@+id/password2_label"
+        style="@style/checkout_text_view_style"
+        android:text="Re-enter password" />
+
+    <EditText
+        android:id="@+id/password2"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:inputType="textPassword"
+        android:hint="Enter password here"
+        />
+    <Button
+        android:id="@+id/register"
+        android:text="@string/register"
+        android:layout_marginTop="10dp"
+        android:onClick="onSubmit"
+        android:layout_marginBottom="30dp"
+        style="@style/button" />
+    <Button
+        android:layout_height="20dp"
+
+        android:layout_width="0dp"/>
+
+</LinearLayout>
+</ScrollView>
