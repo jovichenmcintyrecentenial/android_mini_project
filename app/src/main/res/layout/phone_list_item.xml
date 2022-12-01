@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/rectrangle"
+    android:paddingLeft="@dimen/page_margin2"
+    android:paddingRight="@dimen/page_margin2"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/phone_image"
+        android:layout_width="@dimen/page_margins"
+        android:layout_height="@dimen/page_margins"
+        android:layout_marginEnd="@dimen/image_margin"
+        app:srcCompat="@drawable/ic_logo" />
+<LinearLayout
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/phone_name"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:textColor="#000"
+        android:layout_height="0dp"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:text="Samsung Galaxy S22 Ultra 5G" />
+
+    <TextView
+        android:id="@+id/storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#393939"
+        android:textSize="13sp"
+        android:text="20 Glenheather Drive" />
+    <TextView
+        android:id="@+id/phone_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#393939"
+        android:textSize="13sp"
+        android:text="FJK HKF" />
+</LinearLayout>
+    <TextView
+        android:id="@+id/phone_price"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:textSize="17sp"
+        android:layout_height="wrap_content"
+        android:text="$152.25" />
+
+</LinearLayout>

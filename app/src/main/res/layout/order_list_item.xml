@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/rectrangle"
+    android:weightSum="1"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/page_margins"
+        android:layout_height="@dimen/page_margins"
+        android:layout_marginEnd="@dimen/image_margin"
+        app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:text="iPhone" />
+            <TextView
+                android:id="@+id/address1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#393939"
+                android:textSize="14sp"
+                android:text="20 Glenheather Drive" />
+            <TextView
+                android:id="@+id/address2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#393939"
+                android:textSize="14sp"
+                android:text="FJK HKF" />
+        </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/price"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:text="$152222.25" />
+
+        <LinearLayout
+            android:background="@drawable/status_banner"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="right|center_vertical"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/order_status"
+            android:textColor="#fff"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_height="wrap_content"
+            android:text="Ordered" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

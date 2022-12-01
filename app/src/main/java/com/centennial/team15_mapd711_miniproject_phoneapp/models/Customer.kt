@@ -1,4 +1,4 @@
-
+import java.util.UUID
 
 data class CustomerModel(
     var email: String? = null,
@@ -8,5 +8,6 @@ data class CustomerModel(
     var city: String? = null,
     var postal: String? = null,
     var password: String? = null,
+    var id:String = UUID.randomUUID().toString()
 )
 

@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.BottomNavActivity
 import com.centennial.team15_mapd711_miniproject_phoneapp.models.Database
 import com.centennial.team15_mapd711_miniproject_phoneapp.ui.register.RegisterAcitivy
 
@@ -41,10 +42,10 @@ class LoginActivity : AppCompatActivity() {
                 editor.putString("username", customerModel.firstname)
                 editor.apply()
 
-//                Toast.makeText(this,getString(R.string.login_success),Toast.LENGTH_LONG).show()
-//                var intent = Intent(this,BottomNavigationActivity::class.java)
-//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-//                startActivity(intent)
+                Toast.makeText(this,getString(R.string.login_success),Toast.LENGTH_LONG).show()
+                var intent = Intent(this, BottomNavActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
 
             }
             else{

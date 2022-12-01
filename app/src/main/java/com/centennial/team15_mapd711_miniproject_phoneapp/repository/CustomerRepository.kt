@@ -36,7 +36,8 @@ class CustomerRepository {
 
                 Database.getDB()!!
                     .collection(collection)
-                    .add(customer)
+                    .document(customer.email!!)
+                    .set(customer)
                     .await()
         }
 
@@ -52,13 +53,14 @@ class CustomerRepository {
         }
 
         //update customer data
-        fun update(context: Context, customer:CustomerModel) {
-//            phoneStoreDatabase = getDB(context)
+        suspend  fun update(context: Context, customer:CustomerModel) {
 //
-//            CoroutineScope(Dispatchers.IO).launch {
-//
-//                phoneStoreDatabase!!.phonestoreDao().updateCustomer(customer)
-//            }
+
+                Database.getDB()!!
+                    .collection(collection)
+                    .document(customer.email!!)
+                    .set(customer)
+                    .await()
 
         }
         //check customer login credentials
@@ -68,7 +70,6 @@ class CustomerRepository {
                 .whereEqualTo("password", password)
                 .whereEqualTo("email",username)
                 .get().await()
-
             if(!quertSnapshot.isEmpty){
                  var customer = quertSnapshot.toObjects(CustomerModel::class.java)[0]
                 loginCustomer.postValue(customer)
