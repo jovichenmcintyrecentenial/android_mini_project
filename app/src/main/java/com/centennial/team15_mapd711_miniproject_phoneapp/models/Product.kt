@@ -4,22 +4,17 @@ import java.util.*
 
 data class ProductModel(
 
-    //defining a column phoneModel
-    var phoneModel: String,
-    //defining a column price
-    var price: Double,
-    var imageUri: String,
-    //defining a column phoneMake
-    var phoneMake: String,
-    //defining a column phoneColor
-    var phoneColor: String,
-    //defining a column storageCapacity
-    var storageCapacity: String
+    var phoneModel: String? = null,
+    var price: Double? = null,
+    var imageUri: String? = null,
+    var phoneMake: String? = null,
+    var phoneColor: String? = null,
+    var storageCapacity: String? = null,
 
 
 )
 {
-    fun getFormatterPrice(): String {
+    fun formattedPrice(): String {
         return "$"+ NumberFormat.getNumberInstance(Locale.US).format(price);
     }
 }

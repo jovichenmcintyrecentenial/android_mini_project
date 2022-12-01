@@ -123,7 +123,7 @@ class ProductsFragment : Fragment() {
             //update phone name in list
             phoneNameTextView?.text = phone.phoneModel
             //update price on list time
-            priceTextView?.text = phone.getFormatterPrice()
+            priceTextView?.text = phone.formattedPrice()
             return inflatedView!!
         }
 

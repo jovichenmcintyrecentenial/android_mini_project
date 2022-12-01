@@ -16,7 +16,7 @@ class ProductsViewModel : ViewModel() {
     //get list of products and update live data valuse
     fun getProducts(context: Context) {
         CoroutineScope(Dispatchers.IO).launch {
-//            listOfProductLiveData.postValue(ProductRepository.getAllProducts(context))
+            listOfProductLiveData.postValue(ProductRepository.getAllProducts(context))
         }
     }
 

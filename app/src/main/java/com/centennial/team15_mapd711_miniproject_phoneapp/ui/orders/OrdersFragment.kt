@@ -178,7 +178,7 @@ class OrdersFragment : Fragment() {
             address2?.text = customerModel.postal
 
             //update price on list time
-            priceTextView?.text = productOrder.productModel!!.getFormatterPrice()
+            priceTextView?.text = productOrder.productModel!!.formattedPrice()
             return inflatedView!!
         }
 
