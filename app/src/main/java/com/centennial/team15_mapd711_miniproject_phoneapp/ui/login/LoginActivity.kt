@@ -2,6 +2,7 @@ package com.centennial.team15_mapd711_miniproject_phoneapp.ui.login
 
 import CustomerModel
 import LoginViewModel
+import ProductRepository.Companion.initialProductData
 import UserInputException
 import android.content.Context
 import android.content.Intent
@@ -27,7 +28,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         Database.initDatabase(applicationContext)
+        initialProductData(this)
+
         loginViewModel = ViewModelProvider(this).get(modelClass = LoginViewModel::class.java)
 
         usernameEditText = findViewById(R.id.uname)
