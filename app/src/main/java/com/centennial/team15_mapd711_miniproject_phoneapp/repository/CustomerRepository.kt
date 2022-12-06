@@ -56,11 +56,11 @@ class CustomerRepository {
         suspend  fun update(context: Context, customer:CustomerModel) {
 //
 
-                Database.getDB()!!
-                    .collection(collection)
-                    .document(customer.email!!)
-                    .set(customer)
-                    .await()
+            Database.getDB()!!
+                .collection(collection)
+                .document(customer.email!!)
+                .set(customer)
+                .await()
 
         }
         //check customer login credentials
