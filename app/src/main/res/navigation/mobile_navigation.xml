@@ -22,4 +22,10 @@
         android:name="com.centennial.team15_mapd711_miniproject_phoneapp.ui.profile.ProfileFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_maps"
+        android:name="com.centennial.team15_mapd711_miniproject_phoneapp.ui.maps.MapsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
