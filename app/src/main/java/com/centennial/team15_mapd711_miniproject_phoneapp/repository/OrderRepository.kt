@@ -26,12 +26,12 @@ class OrderRepository {
 
             Database.getDB()!!
                 .collection(collection)
-                .document(orderModel.id)
+                .document(orderModel.idCreate())
                 .set(orderModel)
                 .await()
         }
         //get all order from customer with specified id
-        suspend fun getMyProductsOrders(context: Context, id: Int): List<OrderModel>? {
+        suspend fun getMyProductsOrders(context: Context): List<OrderModel>? {
 
             var quertSnapshot = Database.getDB()!!.collection(collection)
                 .whereEqualTo("custId", CustomerRepository.loginCustomer.value!!.id)
@@ -39,8 +39,6 @@ class OrderRepository {
             if(!quertSnapshot.isEmpty){
                 val customers = quertSnapshot.toObjects(OrderModel::class.java)
                 return customers
-
-
             }
             return null
         }

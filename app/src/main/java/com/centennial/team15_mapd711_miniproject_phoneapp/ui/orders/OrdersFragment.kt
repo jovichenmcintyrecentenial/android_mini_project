@@ -1,6 +1,7 @@
 package  com.centennial.team15_mapd711_miniproject_phoneapp.ui.orders
 
 import CustomerModel
+import OrderModel
 import OrdersViewModel
 import ProductOrder
 import android.app.Activity
@@ -25,13 +26,13 @@ class OrdersFragment : Fragment() {
     private var customerID: String? = null
 
     //list for adaptor so i can update it properly when livedata changes
-    var list:MutableList<ProductOrder>? = null
+    var list:MutableList<OrderModel>? = null
 
     //trigger get orders when back press to update status rendered on list view
     override fun onResume() {
         super.onResume()
         if(ordersViewModel!=null){
-            context?.let { ordersViewModel!!.getOrders(it,customerID!!) }
+            context?.let { ordersViewModel!!.getOrders(it) }
         }
     }
 
@@ -66,7 +67,7 @@ class OrdersFragment : Fragment() {
                         //observer trigger again so i can properly maintain the state of list view
                         //so it can be refreshed when needed
                         if(list == null){
-                            list = listOfOrders as MutableList<ProductOrder>?
+                            list = listOfOrders as MutableList<OrderModel>?
                         }
                         //attach adaptor to listview once
                         if(listView.adapter == null) {
@@ -83,7 +84,7 @@ class OrdersFragment : Fragment() {
                     }
                 })
                 //get logined in customer's orders from order database
-                context?.let { ordersViewModel!!.getOrders(it,customerModel.id!!) }
+                context?.let { ordersViewModel!!.getOrders(it) }
             }
 
         })
@@ -127,7 +128,7 @@ class OrdersFragment : Fragment() {
         return view
     }
 
-    class OrderListAdaptor(context: Activity, list:List<ProductOrder>,customerModel: CustomerModel):  BaseAdapter(){
+    class OrderListAdaptor(context: Activity, list:List<OrderModel>,customerModel: CustomerModel):  BaseAdapter(){
 
         var context = context
         var list = list
@@ -138,7 +139,7 @@ class OrdersFragment : Fragment() {
             return list.count()
         }
 
-        override fun getItem(position: Int): ProductOrder {
+        override fun getItem(position: Int): OrderModel {
             return list[position]
         }
 
@@ -168,17 +169,17 @@ class OrdersFragment : Fragment() {
             val orderStatus = inflatedView?.findViewById<TextView>(R.id.order_status)
 
             //dynamically load phone images using phone uri
-            val resourceImage: Int = context.resources.getIdentifier(productOrder.productModel!!.imageUri, "drawable", context.packageName)
-            phoneImage?.setImageResource(resourceImage)
+//            val resourceImage: Int = context.resources.getIdentifier(productOrder.productModel!!.imageUri, "drawable", context.packageName)
+//            phoneImage?.setImageResource(resourceImage)
 
             //update phone name in list
-            name?.text = productOrder.productModel!!.phoneModel
-            orderStatus?.text = productOrder.orderModel!!.status
+            name?.text = productOrder.product!!.phoneModel
+            orderStatus?.text = productOrder.status
             address1?.text = customerModel.address
             address2?.text = customerModel.postal
 
             //update price on list time
-            priceTextView?.text = productOrder.productModel!!.formattedPrice()
+            priceTextView?.text = productOrder.product!!.formattedPrice()
             return inflatedView!!
         }
 

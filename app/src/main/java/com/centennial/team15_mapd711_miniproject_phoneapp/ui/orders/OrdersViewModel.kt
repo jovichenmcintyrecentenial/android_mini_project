@@ -15,8 +15,8 @@ class OrdersViewModel : ViewModel() {
         MutableLiveData<CustomerModel?>()
     }
     //live data for list of orders
-    val listOfOrdersLiveData: MutableLiveData<List<ProductOrder>?> by lazy {
-        MutableLiveData<List<ProductOrder>?>()
+    val listOfOrdersLiveData: MutableLiveData<List<OrderModel>?> by lazy {
+        MutableLiveData<List<OrderModel>?>()
     }
     //get customer information and update live data
     fun getCustomer( context: Context) {
@@ -26,9 +26,9 @@ class OrdersViewModel : ViewModel() {
 
     }
     //get orders and update live data
-    fun getOrders( context: Context,id:String) {
+    fun getOrders( context: Context) {
         CoroutineScope(Dispatchers.IO).launch {
-//            listOfOrdersLiveData.postValue(OrderRepository.getMyProductsOrders(context,id))
+            listOfOrdersLiveData.postValue(OrderRepository.getMyProductsOrders(context))
         }
     }
 }

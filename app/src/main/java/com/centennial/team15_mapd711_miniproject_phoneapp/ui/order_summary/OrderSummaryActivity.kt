@@ -90,7 +90,7 @@ class OrderSummaryActivity : AppCompatActivity() {
 
             //show date field on order details
             orderDateRow.visibility = View.VISIBLE
-            orderDate.text = Date(checkoutObj.orderModel!!.orderDate).toString()
+            orderDate.text = checkoutObj.orderModel!!.orderDate?.let { Date(it).toString() }
 
             //change titles to order details
             titleTextView.text = getString(R.string.order_details)
@@ -115,7 +115,7 @@ class OrderSummaryActivity : AppCompatActivity() {
                 if(it != null){
                     //date stamp
                     val unixTime = System.currentTimeMillis()
-                    var order = OrderModel(it.id!!, checkoutObj.phone, "Ordered",unixTime)
+                    var order = OrderModel(it.id, checkoutObj.phone, "Ordered",unixTime,null)
 
                     //save orderModel data to database
                     orderViewModel.addOrder(this,order)
@@ -138,13 +138,13 @@ class OrderSummaryActivity : AppCompatActivity() {
                 checkoutObj.orderModel!!.status = "Cancelled"
 
                 //save date in varible to calculator hours passed
-                var orderDate = Date(checkoutObj.orderModel!!.orderDate)
+                var orderDate = checkoutObj.orderModel!!.orderDate?.let { Date(it) }
                 var nowDate = Date(System.currentTimeMillis())
 
                 //use the below link as reference
                 //https://stackoverflow.com/questions/2003521/find-total-hours-between-two-dates
                 //calculate hours elapse
-                var secs: Long = (nowDate.time - orderDate.time)/1000
+                var secs: Long = (nowDate.time - orderDate!!.time)/1000
                 val hours = (secs / 3600).toInt()
 
                 //if hours is less than 24 allow user to cancell order
