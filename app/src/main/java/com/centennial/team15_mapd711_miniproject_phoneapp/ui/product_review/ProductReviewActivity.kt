@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.ui.checkout.CheckOutActivity
 import com.google.gson.Gson
 
 class ProductReviewActivity : AppCompatActivity() {
@@ -74,12 +75,12 @@ class ProductReviewActivity : AppCompatActivity() {
 
 
     fun onSubmit(view: View) {
-//        //create new intent to CheckOutActivity
-//        var newIntent = Intent(this, CheckOutActivity::class.java )
-//
-//        //serialize checkoutObj and save to intent
-//        newIntent.putExtra("checkout",Gson().toJson(checkoutObj))
-//        //start intent
-//        startActivity(newIntent)
+        //create new intent to CheckOutActivity
+        var newIntent = Intent(this, CheckOutActivity::class.java )
+
+        //serialize checkoutObj and save to intent
+        newIntent.putExtra("checkout",Gson().toJson(checkoutObj))
+        //start intent
+        startActivity(newIntent)
     }
 }
