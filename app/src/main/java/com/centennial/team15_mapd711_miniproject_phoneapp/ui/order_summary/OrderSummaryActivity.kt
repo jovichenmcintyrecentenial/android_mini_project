@@ -115,7 +115,7 @@ class OrderSummaryActivity : AppCompatActivity() {
                 if(it != null){
                     //date stamp
                     val unixTime = System.currentTimeMillis()
-                    var order = OrderModel(it.id, checkoutObj.phone, "Ordered",unixTime,null)
+                    var order = OrderModel(it.id, checkoutObj.phone, "Ordered",unixTime)
 
                     //save orderModel data to database
                     orderViewModel.addOrder(this,order)

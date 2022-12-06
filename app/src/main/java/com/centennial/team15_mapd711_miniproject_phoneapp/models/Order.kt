@@ -9,7 +9,7 @@ data class OrderModel(
     var status: String?  = null,
     //defining a column orderDate
     var orderDate: Long?  = null,
-    var id: String? = null
+    var id: String? = UUID.randomUUID().toString()
 )
 {
     //defining a primary key field Id
