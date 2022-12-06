@@ -1,3 +1,5 @@
+import java.util.UUID
+
 data class OrderModel(
     //defining a column custId
     var custId: String,
@@ -11,5 +13,5 @@ data class OrderModel(
 )
 {
     //defining a primary key field Id
-    var id: Int? = null
+    var id: String = UUID.randomUUID().toString()
 }
