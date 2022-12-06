@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/page_margin2"
+    android:layout_marginRight="@dimen/page_margin2"
+    tools:context=".PhoneOptionsSelectActivity">
+
+    <ImageView
+        android:id="@+id/phone_image"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="@dimen/page_margins"
+        android:layout_marginBottom="@dimen/bottom_margin_instruction"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+
+
+    <TextView
+        android:id="@+id/phone_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:text="" />
+    <TextView
+        android:text="@string/review_your_device"
+        style="@style/main_instructions" />
+
+    <TextView
+        android:text="@string/select_your_phone_specification_by_selecting_options_below"
+        android:layout_marginBottom="@dimen/bottom_margin_instruction"
+        style="@style/sub_instructions" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/color"
+        android:layout_marginBottom="@dimen/bottom_margin_instruction"
+        style="@style/instruction_text_stlye" />
+    <LinearLayout
+        android:background="@drawable/spiner_ui"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+
+        android:layout_height="wrap_content">
+    <Spinner
+        android:id="@+id/color_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:prompt="@string/select_a_color"
+        />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/instruction_text_stlye"
+        android:layout_marginBottom="@dimen/bottom_margin_instruction"
+        android:text="@string/storage" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/opt_64GB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/_64_gb" />
+
+    </RadioGroup>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSubmit"
+        android:layout_marginTop="@dimen/bottom_margin_instruction"
+        android:layout_marginBottom="@dimen/bottom_margin_instruction"
+        android:text="@string/order" />
+</LinearLayout>
+</ScrollView>

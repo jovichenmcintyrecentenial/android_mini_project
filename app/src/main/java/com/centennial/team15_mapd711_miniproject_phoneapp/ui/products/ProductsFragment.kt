@@ -1,5 +1,6 @@
 package com.centennial.team15_mapd711_miniproject_phoneapp.ui.products
 
+import PhoneCheckOut
 import ProductModel
 import ProductsViewModel
 import android.app.Activity
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.ui.product_review.ProductReviewActivity
 import com.google.gson.Gson
 
 class ProductsFragment : Fragment() {
@@ -48,11 +50,11 @@ class ProductsFragment : Fragment() {
 
         //create a listener for on click aciton on list view
         listView.setOnItemClickListener { parent, view, position, id ->
-//            var newIntent = Intent(activity, ProductReviewActivity::class.java)
-//            //update create PhoneCheckOut and serialize data and pass to intent
-//            newIntent.putExtra("checkout", Gson().toJson(PhoneCheckOut(productsViewModel.listOfProductLiveData.value!![position])))
-//            //load new Intent
-//            startActivity(newIntent)
+            var newIntent = Intent(activity, ProductReviewActivity::class.java)
+            //update create PhoneCheckOut and serialize data and pass to intent
+            newIntent.putExtra("checkout", Gson().toJson(PhoneCheckOut(productsViewModel.listOfProductLiveData.value!![position])))
+            //load new Intent
+            startActivity(newIntent)
         }
 
         //observer used to update list view with products
