@@ -3,6 +3,7 @@ package  com.centennial.team15_mapd711_miniproject_phoneapp.ui.orders
 import CustomerModel
 import OrderModel
 import OrdersViewModel
+import PhoneCheckOut
 import ProductOrder
 import android.app.Activity
 import android.content.Intent
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.ui.order_summary.OrderSummaryActivity
 import com.google.gson.Gson
 
 class OrdersFragment : Fragment() {
@@ -97,33 +99,33 @@ class OrdersFragment : Fragment() {
         //this was done inorder to reuse the order summary page but it will now render as order details instead
         listView.setOnItemClickListener { parent, view, position, id ->
 
-//            var newIntent = Intent(activity, OrderSummaryActivity::class.java)
-//            //get productOrder from list position
-//            var productOrder = ordersViewModel!!.listOfOrdersLiveData.value!![position]
-//            //get customer data
-//            var customerModel = ordersViewModel!!.liveCustomerData.value!!
-//
-//            //create PhoneCheckOut base on product model
-//            var checkoutObj = PhoneCheckOut(productOrder.productModel!!)
-//
-//            //update remaining field with customer data so it render properly on order summary page
-//            checkoutObj.address = customerModel.address
-//            checkoutObj.city = customerModel.city
-//            checkoutObj.postalCode = customerModel.postal
-//
-//            checkoutObj.firstName = customerModel.firstname
-//            checkoutObj.lastName = customerModel.lastname
-//
-//            checkoutObj.orderModel = productOrder.orderModel
-//
-//            //boolean that is use to indicate what state the order summary page should render
-//            // either as Order Details or Order Summary
-//            checkoutObj.isOrderDetail = true
-//
-//            //update create PhoneCheckOut and serialize data and pass to intent
-//            newIntent.putExtra("checkout", Gson().toJson(checkoutObj))
-//            //load new Intent
-//            startActivity(newIntent)
+            var newIntent = Intent(activity, OrderSummaryActivity::class.java)
+            //get productOrder from list position
+            var productOrder = ordersViewModel!!.listOfOrdersLiveData.value!![position]
+            //get customer data
+            var customerModel = ordersViewModel!!.liveCustomerData.value!!
+
+            //create PhoneCheckOut base on product model
+            var checkoutObj = PhoneCheckOut(productOrder.product!!)
+
+            //update remaining field with customer data so it render properly on order summary page
+            checkoutObj.address = customerModel.address
+            checkoutObj.city = customerModel.city
+            checkoutObj.postalCode = customerModel.postal
+
+            checkoutObj.firstName = customerModel.firstname
+            checkoutObj.lastName = customerModel.lastname
+
+            checkoutObj.orderModel = productOrder
+
+            //boolean that is use to indicate what state the order summary page should render
+            // either as Order Details or Order Summary
+            checkoutObj.isOrderDetail = true
+
+            //update create PhoneCheckOut and serialize data and pass to intent
+            newIntent.putExtra("checkout", Gson().toJson(checkoutObj))
+            //load new Intent
+            startActivity(newIntent)
         }
         return view
     }
