@@ -1,5 +1,4 @@
-//Name: Jovi Chen-Mcintyre
-//ID: 301125059
+
 
 import android.content.Context
 import android.util.Log

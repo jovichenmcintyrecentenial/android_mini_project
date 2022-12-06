@@ -1,8 +1,8 @@
 data class OrderModel(
     //defining a column custId
-    var custId: Int,
+    var custId: String,
     //defining a column productId
-    var productId: Int,
+    var product: ProductModel,
     //defining a column status
     var status: String,
     //defining a column orderDate

@@ -1,6 +1,5 @@
 package com.centennial.team15_mapd711_miniproject_phoneapp.ui.product_review
-//Name: Jovi Chen-Mcintyre
-//ID: 301125059
+
 import PhoneCheckOut
 import android.content.Intent
 import android.os.Bundle

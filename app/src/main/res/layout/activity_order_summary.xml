@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/page_margin2"
+            android:orientation="vertical"
+            tools:context=".ConfirmationCheckOutActivity">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/main_instructions"
+                android:text="@string/order_successful" />
+
+            <TextView
+                style="@style/sub_instructions"
+                android:layout_marginBottom="@dimen/bottom_margin_instruction"
+                android:text="@string/here_is_a_summary_of_your_order_and_delivery_details" />
+
+            <ImageView
+                android:id="@+id/phone_image"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="@dimen/page_margin2"
+                app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/page_margin2"
+                android:background="@drawable/border"
+                android:padding="@dimen/page_margin2">
+
+                <TableRow>
+
+                    <TextView
+                        style="@style/checkout_text_view_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/order_summary"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/company" />
+
+                    <TextView
+                        android:id="@+id/company"
+                        style="@style/information"
+                        tools:text="Apple" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/model" />
+
+                    <TextView
+                        android:id="@+id/model"
+
+                        style="@style/information"
+                        android:text="@string/iphone_14_pro_max" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/color" />
+
+                    <TextView
+                        android:id="@+id/phone_color"
+
+                        style="@style/information"
+                        android:text="Blue" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/internal_storage" />
+
+                    <TextView
+                        android:id="@+id/internal_storage"
+                        style="@style/information"
+
+                        android:text="64 GB" />
+                </TableRow>
+
+                <TableRow android:id="@+id/card_type_row" android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/card_type" />
+
+                    <TextView
+                        android:id="@+id/card_type"
+                        style="@style/information"
+
+                        android:text="Debit" />
+                </TableRow>
+
+                <TableRow android:id="@+id/last_4_digits_row" android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+
+                        android:text="@string/card_last_4_digits" />
+
+                    <TextView
+                        android:id="@+id/last_4_digits"
+
+                        style="@style/information"
+                        android:text="2324" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/price" />
+
+                    <TextView
+                        android:id="@+id/price"
+
+                        style="@style/information"
+                        android:text="$1,250.00" />
+                </TableRow>
+                <TableRow android:id="@+id/order_date_row" android:layout_marginBottom="5dp" android:visibility="gone">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/order_date" />
+
+                    <TextView
+                        android:id="@+id/order_date"
+
+                        style="@style/information"
+                        android:text="$1,250.00" />
+                </TableRow>
+            </TableLayout>
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:padding="@dimen/page_margin2">
+
+                <TableRow>
+
+                    <TextView
+                        style="@style/checkout_text_view_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/delivery_address"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/name" />
+
+                    <TextView
+                        android:id="@+id/user_name"
+
+                        style="@style/information"
+                        android:text="Jovi Chen-Mcintyre" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/address" />
+
+                    <TextView
+                        android:id="@+id/address"
+
+                        style="@style/information"
+                        android:text="20 Glenheather Terrace" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/city" />
+
+                    <TextView
+                        android:id="@+id/city"
+                        style="@style/information"
+
+                        android:text="Markham" />
+                </TableRow>
+
+                <TableRow android:layout_marginBottom="5dp">
+
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/postal_code" />
+
+                    <TextView
+                        android:id="@+id/postal_code"
+                        style="@style/information"
+                        android:text="525 SF4" />
+                </TableRow>
+
+
+            </TableLayout>
+            <Button
+                android:id="@+id/login"
+                android:text="Home"
+                android:onClick="onComplete"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                style="@style/button" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
