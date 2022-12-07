@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.services.ImageLoader
 import com.centennial.team15_mapd711_miniproject_phoneapp.ui.order_summary.OrderSummaryActivity
 import com.google.gson.Gson
 
@@ -170,9 +171,8 @@ class OrdersFragment : Fragment() {
             val address2 = inflatedView?.findViewById<TextView>(R.id.address2)
             val orderStatus = inflatedView?.findViewById<TextView>(R.id.order_status)
 
-            //dynamically load phone images using phone uri
-//            val resourceImage: Int = context.resources.getIdentifier(productOrder.productModel!!.imageUri, "drawable", context.packageName)
-//            phoneImage?.setImageResource(resourceImage)
+            //display image
+            ImageLoader.setImage(context.getString(R.string.base_url)+productOrder.product!!.imageUri+".jpg",phoneImage!!)
 
             //update phone name in list
             name?.text = productOrder.product!!.phoneModel

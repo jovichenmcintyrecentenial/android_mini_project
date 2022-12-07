@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.services.ImageLoader
 import com.centennial.team15_mapd711_miniproject_phoneapp.ui.checkout.CheckOutActivity
 import com.google.gson.Gson
 
@@ -64,11 +65,8 @@ class ProductReviewActivity : AppCompatActivity() {
         //display phone name in view
         phoneNameTextView.text = checkoutObj.phone.phoneModel
 
-        //use phone.uri from phone object to get resourceImage based on uri
-        val resourceImage: Int = resources.getIdentifier(checkoutObj.phone.imageUri, "drawable", packageName)
+        ImageLoader.setImage(getString(R.string.base_url)+checkoutObj.phone.imageUri+".jpg",phoneImageView)
 
-        //set image from for phone
-        phoneImageView?.setImageResource(resourceImage)
 
     }
 

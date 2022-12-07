@@ -17,7 +17,7 @@
         android:layout_width="@dimen/page_margins"
         android:layout_height="@dimen/page_margins"
         android:layout_marginEnd="@dimen/image_margin"
-        app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+        app:srcCompat="@drawable/ic_home_black_24dp" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_weight="1"

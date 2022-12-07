@@ -120,5 +120,6 @@
     <string name="review_your_device">Review your device</string>
     <string name="order">Order</string>
     <string name="first_lastname">First Lastname</string>
+    <string name="base_url" translatable="false">https://onlineclassifiedjamaica.com/drawable/</string>
 
 </resources>

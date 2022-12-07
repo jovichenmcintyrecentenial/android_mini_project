@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.services.ImageLoader
 import com.centennial.team15_mapd711_miniproject_phoneapp.ui.product_review.ProductReviewActivity
 import com.google.gson.Gson
 
@@ -119,8 +120,7 @@ class ProductsFragment : Fragment() {
             storage!!.text = context.getString(R.string.storage)+" "+phone.storageCapacity
             phoneColor!!.text = context.getString(R.string.color_phone)+phone.phoneColor
             //dynamically load phone images using phone uri
-            val resourceImage: Int = context.resources.getIdentifier(phone.imageUri, "drawable", context.packageName)
-            phoneImage?.setImageResource(resourceImage)
+            ImageLoader.setImage(context.getString(R.string.base_url)+phone.imageUri!!+".jpg",phoneImage!!)
 
             //update phone name in list
             phoneNameTextView?.text = phone.phoneModel

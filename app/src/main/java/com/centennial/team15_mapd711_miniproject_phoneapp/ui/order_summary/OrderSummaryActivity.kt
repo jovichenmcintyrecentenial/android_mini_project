@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.BottomNavActivity
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.services.ImageLoader
 import com.centennial.team15_mapd711_miniproject_phoneapp.ui.udpate_customer.UpdateCustumerViewModel
 import com.google.gson.Gson
 import java.util.*
@@ -56,8 +57,7 @@ class OrderSummaryActivity : AppCompatActivity() {
         checkoutObj = Gson().fromJson(intent.getStringExtra("checkout"), PhoneCheckOut::class.java)
 
         //display phone image
-        val resourceImage: Int = resources.getIdentifier(checkoutObj.phone.imageUri, "drawable", packageName)
-        phoneImage?.setImageResource(resourceImage)
+        ImageLoader.setImage(getString(R.string.base_url)+checkoutObj.phone.imageUri+".jpg",phoneImage!!)
 
         //populate views
         companyName.text = checkoutObj.phone.phoneMake
