@@ -22,7 +22,7 @@ class StoreRepository {
             MutableLiveData<List<Store>>()
         }
 
-        suspend fun getAllStores(context: Context):List<Store>? {
+        suspend fun getAllStores(context: Context,productModel: ProductModel? = null):List<Store>? {
 
             try {
                 val res = context.resources
@@ -31,7 +31,16 @@ class StoreRepository {
                 inputStream.read(b)
                 var json = String(b)
                 var stores:ArrayList<Store> = Gson().fromJson(json, Array<Store>::class.java).toList() as ArrayList<Store>
-                var x = ""
+                if(productModel!= null){
+                    var storeWithProduct:MutableList<Store> = arrayListOf<Store>()
+                    for (store in stores){
+                        if(store.brand == productModel.phoneMake.toString().toLowerCase()) {
+                            storeWithProduct.add(store)
+                        }
+                    }
+                    return storeWithProduct
+
+                }
                 listOfStores.postValue(stores)
                 return stores
             } catch (e: Exception) {

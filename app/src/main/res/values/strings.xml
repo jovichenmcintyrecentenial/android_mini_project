@@ -121,5 +121,6 @@
     <string name="order">Order</string>
     <string name="first_lastname">First Lastname</string>
     <string name="base_url" translatable="false">https://onlineclassifiedjamaica.com/drawable/</string>
+    <string name="order_online">Order Online</string>
 
 </resources>

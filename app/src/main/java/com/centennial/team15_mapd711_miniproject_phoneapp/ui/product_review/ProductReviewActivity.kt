@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.centennial.team15_mapd711_miniproject_phoneapp.MapsActivity
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
 import com.centennial.team15_mapd711_miniproject_phoneapp.services.ImageLoader
 import com.centennial.team15_mapd711_miniproject_phoneapp.ui.checkout.CheckOutActivity
@@ -77,6 +78,17 @@ class ProductReviewActivity : AppCompatActivity() {
 
         //serialize checkoutObj and save to intent
         newIntent.putExtra("checkout",Gson().toJson(checkoutObj))
+        //start intent
+        startActivity(newIntent)
+    }
+
+    fun onFindStores(view: View) {
+
+        //create new intent to CheckOutActivity
+        var newIntent = Intent(this, MapsActivity::class.java )
+
+        //serialize checkoutObj and save to intent
+        newIntent.putExtra("product",Gson().toJson(checkoutObj.phone))
         //start intent
         startActivity(newIntent)
     }

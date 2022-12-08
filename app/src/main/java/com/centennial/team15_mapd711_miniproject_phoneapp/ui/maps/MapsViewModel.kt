@@ -17,10 +17,10 @@ class MapsViewModel: ViewModel() {
         MutableLiveData<List<Store>>()
     }
 
-    fun getAllStores(context: Context){
+    fun getAllStores(context: Context,productModel: ProductModel? = null){
 
         CoroutineScope(Dispatchers.IO).launch {
-            liveListOfStores.postValue( StoreRepository.getAllStores(context))
+            liveListOfStores.postValue( StoreRepository.getAllStores(context,productModel))
         }
     }
 

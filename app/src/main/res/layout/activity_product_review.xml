@@ -79,13 +79,32 @@
             android:text="@string/_64_gb" />
 
     </RadioGroup>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/bottom_margin_instruction"
+        android:layout_marginBottom="@dimen/bottom_margin_instruction"
+        android:layout_height="wrap_content">
     <Button
         android:id="@+id/button"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onFindStores"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/white"
+        android:text="Find stores"
+   />
+
+    <Button
+        android:id="@+id/near_me"
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onSubmit"
-        android:layout_marginTop="@dimen/bottom_margin_instruction"
-        android:layout_marginBottom="@dimen/bottom_margin_instruction"
-        android:text="@string/order" />
+        android:text="@string/order_online"
+ />
+    </LinearLayout>
 </LinearLayout>
 </ScrollView>
