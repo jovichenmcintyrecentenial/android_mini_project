@@ -1,21 +1,26 @@
 package com.centennial.team15_mapd711_miniproject_phoneapp.ui.maps
 
 import MapsViewModel
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
+import com.centennial.team15_mapd711_miniproject_phoneapp.models.Store
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 
@@ -41,6 +46,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
         mapsViewModel!!.liveListOfStores.observe(viewLifecycleOwner, Observer { stores ->
             if(mMap!= null){
+
                 addMarkers()
             }
         })
@@ -56,7 +62,10 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     fun addMarkers(){
 
         if(mapsViewModel?.liveListOfStores != null && mMap != null) {
+            //set custom info window adapter view
+
             var stores = mapsViewModel!!.liveListOfStores!!.value
+            mMap!!.setInfoWindowAdapter(MyInfoWindowAdapter(requireContext(),stores!!))
             for ((index, store) in stores!!.withIndex()) {
                 mMap!!.addMarker(
                     MarkerOptions()
@@ -92,8 +101,50 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
     }
 
 
 
+}
+
+class MyInfoWindowAdapter(context: Context, private val stores: List<Store>) : GoogleMap.InfoWindowAdapter {
+    val mWindow: View = LayoutInflater.from(context).inflate(R.layout.map_window_info, null)
+    val contex = context
+
+    override fun getInfoWindow(marker: Marker): View {
+
+        //use the snippet infomation and cast it to an int so app know which marker is being pressed
+        var index = marker.snippet.toString().toIntOrNull()
+        if(index != null){
+            //take index and retrieve storelocation object
+            var storeLocation = stores[index];
+
+            //find views
+            val companyNameTextView = mWindow.findViewById<TextView>(R.id.company_name)
+            val companyImageView = mWindow.findViewById<ImageView>(R.id.company_image)
+            val addressTextView = mWindow.findViewById<TextView>(R.id.address)
+            val phoneTextView = mWindow.findViewById<TextView>(R.id.phone)
+            val openingTextView = mWindow.findViewById<TextView>(R.id.opening)
+            val websiteTextView = mWindow.findViewById<TextView>(R.id.website)
+
+            //update view data
+            companyNameTextView.text = storeLocation.name
+            addressTextView.text = storeLocation.address
+            phoneTextView.text = storeLocation.phoneNumber
+            openingTextView.text = storeLocation.openHours +  " - " + storeLocation.closeHours
+            websiteTextView.text = storeLocation.website
+
+            //load store image in view base on name
+            val resourceImage: Int = contex.resources.getIdentifier(storeLocation.image, "drawable", contex.packageName)
+            companyImageView?.setImageResource(resourceImage)
+
+        }
+
+        return mWindow
+    }
+
+    override fun getInfoContents(marker: Marker): View {
+        return mWindow
+    }
 }

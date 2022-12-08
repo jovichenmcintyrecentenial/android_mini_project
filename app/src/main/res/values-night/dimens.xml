@@ -9,4 +9,5 @@
     <dimen name="labelTextSize">17sp</dimen>
     <dimen name="page_margin2">20dp</dimen>
     <dimen name="image_margin">15dp</dimen>
+    <dimen name="list_font_size">17sp</dimen>
 </resources>
