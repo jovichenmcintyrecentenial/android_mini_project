@@ -1,21 +1,29 @@
 package com.centennial.team15_mapd711_miniproject_phoneapp.ui.maps
 
+import MapsViewModel
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-class MapsFragment : Fragment() {
+class MapsFragment : Fragment(), OnMapReadyCallback {
 
 
-    private lateinit var mMap: GoogleMap
+    private var mMap: GoogleMap? = null
+    var mapsViewModel:MapsViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,28 +36,64 @@ class MapsFragment : Fragment() {
         val supportMapFragment =
             childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
 
-        supportMapFragment!!.getMapAsync { //googleMap ->
-            // When map is loaded
-//            googleMap.setOnMapClickListener { latLng -> // When clicked on map
-//                // Initialize marker options
-//                val markerOptions = MarkerOptions()
-//                // Set position of marker
-//                markerOptions.position(latLng)
-//                // Set title of marker
-//                markerOptions.title(latLng.latitude.toString() + " : " + latLng.longitude.toString())
-//                // Remove all marker
-//                googleMap.clear()
-//                // Animating to zoom the marker
-//                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
-//                // Add marker on map
-//                googleMap.addMarker(markerOptions)
-//            }
-        }
+        mapsViewModel =
+            ViewModelProvider(this).get(MapsViewModel::class.java)
+
+        mapsViewModel!!.liveListOfStores.observe(viewLifecycleOwner, Observer { stores ->
+            if(mMap!= null){
+                addMarkers()
+            }
+        })
+
+        mapsViewModel!!.getAllStores(requireContext())
+
+        supportMapFragment!!.getMapAsync (this)
 
         return view
 
     }
 
-    fun onEdit(view: View) {}
+    fun addMarkers(){
+
+        if(mapsViewModel?.liveListOfStores != null && mMap != null) {
+            var stores = mapsViewModel!!.liveListOfStores!!.value
+            for ((index, store) in stores!!.withIndex()) {
+                mMap!!.addMarker(
+                    MarkerOptions()
+                        .position(LatLng(store.latitude!!, store.longitude!!))
+                        .title(store.name!!)
+                        //save item position so item can be retrieve in MyInfoWindowAdapter to extract more data
+                        .snippet(index.toString())
+                        //resize image because image was too large
+                        .icon(
+                            BitmapDescriptorFactory.fromBitmap(
+                                resizeMapIcons(
+                                    store.icon!!,
+                                    80,
+                                    106
+                                )
+                            )
+                        )
+                )
+            }
+        }
+    }
+
+    private fun resizeMapIcons(iconName: String?, width: Int, height: Int): Bitmap {
+        val imageBitmap = BitmapFactory.decodeResource(
+            resources, resources.getIdentifier(
+                iconName, "drawable",
+                requireContext().packageName
+            )
+        )
+        return Bitmap.createScaledBitmap(imageBitmap, width, height, false)
+    }
+
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+    }
+
+
 
 }
