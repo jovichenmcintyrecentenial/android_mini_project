@@ -9,6 +9,7 @@
     android:background="@drawable/rectrangle"
     android:paddingLeft="@dimen/page_margin2"
     android:paddingRight="@dimen/page_margin2"
+    android:id="@+id/root_view"
     android:layout_height="80dp">
 
     <ImageView

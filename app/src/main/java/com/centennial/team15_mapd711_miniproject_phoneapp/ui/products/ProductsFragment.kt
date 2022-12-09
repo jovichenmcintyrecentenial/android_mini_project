@@ -12,11 +12,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
 import com.centennial.team15_mapd711_miniproject_phoneapp.services.ImageLoader
 import com.centennial.team15_mapd711_miniproject_phoneapp.ui.product_review.ProductReviewActivity
@@ -47,23 +50,20 @@ class ProductsFragment : Fragment() {
         welcome.text = getString(R.string.welcome)+" "+username
 
         //find list view
-        var listView = view.findViewById<ListView>(R.id.list)
+        var listView = view.findViewById<RecyclerView>(R.id.recyclerview)
 
-        //create a listener for on click aciton on list view
-        listView.setOnItemClickListener { parent, view, position, id ->
-            var newIntent = Intent(activity, ProductReviewActivity::class.java)
-            //update create PhoneCheckOut and serialize data and pass to intent
-            newIntent.putExtra("checkout", Gson().toJson(PhoneCheckOut(productsViewModel.listOfProductLiveData.value!![position])))
-            //load new Intent
-            startActivity(newIntent)
-        }
+        listView.layoutManager = LinearLayoutManager(requireContext())
 
         //observer used to update list view with products
         activity?.let { productsViewModel.listOfProductLiveData.observe(it, Observer { listOfPhones ->
             if(listOfPhones != null) {
                 //create instance of a custom listAdpator called PhoneListAdaptor
-                var listAdaptor = activity?.let { activity ->
-                    PhoneListAdaptor(activity, listOfPhones)
+                var listAdaptor = PhoneListAdaptor(requireActivity(), listOfPhones){ product ->
+                    var newIntent = Intent(activity, ProductReviewActivity::class.java)
+                    //update create PhoneCheckOut and serialize data and pass to intent
+                    newIntent.putExtra("checkout", Gson().toJson(PhoneCheckOut(product)))
+                    //load new Intent
+                    startActivity(newIntent)
                 }
 
                 //attach adaptor to listview
@@ -79,56 +79,116 @@ class ProductsFragment : Fragment() {
         return view
     }
 
-    //custom list adaptor to achieve design
-    class PhoneListAdaptor(context: Activity, list:List<ProductModel>):  BaseAdapter(){
+    class PhoneListAdaptor(context: Activity, private val mList: List<ProductModel>,private val onItemClicked: (ProductModel) -> Unit) : RecyclerView.Adapter<PhoneListAdaptor.ViewHolder>() {
 
         var context = context
-        var list = list
 
-        override fun getCount(): Int {
-            return list.count()
+
+        // create new views
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            // inflates the card_view_design view
+            // that is used to hold list item
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.phone_list_item, parent, false)
+
+            return ViewHolder(view)
         }
 
-        override fun getItem(position: Int): ProductModel {
-            return list[position]
-        }
-
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-            var inflatedView:View? = convertView
-            //load data at position
-            val phone = list[position]
 
 
-            if(inflatedView == null){
-                //inflate custom list item layout
-                inflatedView = LayoutInflater.from(context).
-                inflate(R.layout.phone_list_item, parent, false)
-            }
+        // binds the list items to a view
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-            //find views
-            val priceTextView = inflatedView?.findViewById<TextView>(R.id.phone_price)
-            val phoneImage = inflatedView?.findViewById<ImageView>(R.id.phone_image)
-            val phoneNameTextView = inflatedView?.findViewById<TextView>(R.id.phone_name)
-            val storage = inflatedView?.findViewById<TextView>(R.id.storage)
-            val phoneColor = inflatedView?.findViewById<TextView>(R.id.phone_color)
+            val phone = mList[position]
 
-            storage!!.text = context.getString(R.string.storage)+" "+phone.storageCapacity
-            phoneColor!!.text = context.getString(R.string.color_phone)+phone.phoneColor
+            holder.storage!!.text = context.getString(R.string.storage)+" "+phone.storageCapacity
+            holder.phoneColor!!.text = context.getString(R.string.color_phone)+phone.phoneColor
             //dynamically load phone images using phone uri
-            ImageLoader.setImage(context.getString(R.string.base_url)+phone.imageUri!!+".jpg",phoneImage!!)
+            ImageLoader.setImage(context.getString(R.string.base_url)+phone.imageUri!!+".jpg",holder.phoneImage!!)
 
             //update phone name in list
-            phoneNameTextView?.text = phone.phoneModel
+            holder.phoneNameTextView?.text = phone.phoneModel
             //update price on list time
-            priceTextView?.text = phone.formattedPrice()
-            return inflatedView!!
+            holder.priceTextView?.text = phone.formattedPrice()
+
+            holder.root.setOnClickListener {
+                onItemClicked(phone)
+            }
+
         }
 
+        // return the number of the items in the list
+        override fun getItemCount(): Int {
+            return mList.count()
+        }
+
+        // Holds the views for adding it to image and text
+        class ViewHolder(inflatedView: View) : RecyclerView.ViewHolder(inflatedView) {
+
+            //find views
+            val priceTextView = inflatedView.findViewById<TextView>(R.id.phone_price)
+            val phoneImage = inflatedView.findViewById<ImageView>(R.id.phone_image)
+            val phoneNameTextView = inflatedView.findViewById<TextView>(R.id.phone_name)
+            val storage = inflatedView.findViewById<TextView>(R.id.storage)
+            val phoneColor = inflatedView.findViewById<TextView>(R.id.phone_color)
+            val root = inflatedView.findViewById<LinearLayout>(R.id.root_view)
+
+
+
+        }
     }
+
+
+    //custom list adaptor to achieve design
+//    class PhoneListAdaptor(context: Activity, list:List<ProductModel>):  BaseAdapter(){
+//
+//        var context = context
+//        var list = list
+//
+//        override fun getCount(): Int {
+//            return list.count()
+//        }
+//
+//        override fun getItem(position: Int): ProductModel {
+//            return list[position]
+//        }
+//
+//        override fun getItemId(position: Int): Long {
+//            return position.toLong()
+//        }
+//
+//        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+//
+//            var inflatedView:View? = convertView
+//            //load data at position
+//            val phone = list[position]
+//
+//
+//            if(inflatedView == null){
+//                //inflate custom list item layout
+//                inflatedView = LayoutInflater.from(context).
+//                inflate(R.layout.phone_list_item, parent, false)
+//            }
+//
+//            //find views
+//            val priceTextView = inflatedView?.findViewById<TextView>(R.id.phone_price)
+//            val phoneImage = inflatedView?.findViewById<ImageView>(R.id.phone_image)
+//            val phoneNameTextView = inflatedView?.findViewById<TextView>(R.id.phone_name)
+//            val storage = inflatedView?.findViewById<TextView>(R.id.storage)
+//            val phoneColor = inflatedView?.findViewById<TextView>(R.id.phone_color)
+//
+//            storage!!.text = context.getString(R.string.storage)+" "+phone.storageCapacity
+//            phoneColor!!.text = context.getString(R.string.color_phone)+phone.phoneColor
+//            //dynamically load phone images using phone uri
+//            ImageLoader.setImage(context.getString(R.string.base_url)+phone.imageUri!!+".jpg",phoneImage!!)
+//
+//            //update phone name in list
+//            phoneNameTextView?.text = phone.phoneModel
+//            //update price on list time
+//            priceTextView?.text = phone.formattedPrice()
+//            return inflatedView!!
+//        }
+//
+//    }
 
 }
