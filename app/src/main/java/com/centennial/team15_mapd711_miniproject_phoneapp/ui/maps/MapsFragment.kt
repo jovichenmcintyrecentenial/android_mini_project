@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.team15_mapd711_miniproject_phoneapp.R
 import com.centennial.team15_mapd711_miniproject_phoneapp.models.Store
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -85,6 +86,11 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         )
                 )
             }
+            //adjust camera to first store in list of locations
+            mMap!!.moveCamera(
+                CameraUpdateFactory.newLatLngZoom(LatLng(stores[0].latitude!!, stores[0].longitude!!),
+                8.0F
+            ))
         }
     }
 
