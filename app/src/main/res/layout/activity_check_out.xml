@@ -121,27 +121,6 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            style="@style/checkout_text_view_style"
-            android:text="@string/firstname" />
-
-        <EditText
-            android:id="@+id/fname"
-            style="@style/edit_text"
-            android:autofillHints=""
-            android:hint="@string/enter_your_firstname"
-            android:inputType="textPersonName" />
-
-        <TextView
-            style="@style/checkout_text_view_style"
-            android:text="@string/lastname" />
-        <EditText
-            android:id="@+id/lname"
-            style="@style/edit_text"
-            android:autofillHints=""
-            android:hint="@string/enter_your_lastname"
-            android:inputType="textPersonName" />
         <TextView
             style="@style/checkout_text_view_style"
             android:text="@string/phone_number" />
@@ -154,38 +133,6 @@
             android:inputType="phone" />
 
 
-        <TextView
-            style="@style/checkout_text_view_style"
-            android:text="@string/address" />
-
-
-        <EditText
-            android:id="@+id/address"
-            style="@style/edit_text"
-            android:autofillHints=""
-            android:hint="@string/enter_your_address"
-            android:inputType="textPersonName" />
-        <TextView
-            style="@style/checkout_text_view_style"
-            android:text="@string/city" />
-
-        <EditText
-            android:id="@+id/city"
-            style="@style/edit_text"
-            android:autofillHints=""
-            android:hint="@string/enter_your_city"
-            android:inputType="textPersonName" />
-
-        <TextView
-            style="@style/checkout_text_view_style"
-            android:text="@string/postalcode" />
-
-        <EditText
-            android:id="@+id/postal_code"
-            style="@style/edit_text"
-            android:autofillHints=""
-            android:hint="@string/enter_your_postal_code"
-            android:inputType="textPersonName" />
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
@@ -194,6 +141,61 @@
             android:layout_marginTop="@dimen/bottom_margin_instruction"
             android:layout_marginBottom="@dimen/bottom_margin_instruction"
             android:text="Pay" />
+        <EditText
+            android:id="@+id/fname"
+            style="@style/edit_text"
+            android:visibility="gone"
+            android:autofillHints=""
+            android:hint="@string/enter_your_firstname"
+            android:enabled="false"
+            android:inputType="textPersonName" />
+
+
+        <EditText
+            android:id="@+id/lname"
+            style="@style/edit_text"
+            android:autofillHints=""
+            android:hint="@string/enter_your_lastname"
+            android:enabled="false"
+            android:visibility="gone"
+
+            android:inputType="textPersonName" />
+
+
+
+
+        <EditText
+            android:id="@+id/address"
+            style="@style/edit_text"
+            android:autofillHints=""
+            android:hint="@string/enter_your_address"
+            android:enabled="false"
+            android:visibility="gone"
+
+            android:inputType="textPersonName" />
+
+
+        <EditText
+            android:id="@+id/city"
+            style="@style/edit_text"
+            android:autofillHints=""
+            android:hint="@string/enter_your_city"
+            android:enabled="false"
+            android:visibility="gone"
+
+            android:inputType="textPersonName" />
+
+
+
+        <EditText
+            android:id="@+id/postal_code"
+            style="@style/edit_text"
+            android:enabled="false"
+            android:autofillHints=""
+            android:visibility="gone"
+            android:hint="@string/enter_your_postal_code"
+            android:inputType="textPersonName" />
+
     </LinearLayout>
 
 </ScrollView>

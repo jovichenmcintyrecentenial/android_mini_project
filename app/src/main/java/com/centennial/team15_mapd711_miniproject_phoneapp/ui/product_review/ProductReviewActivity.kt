@@ -24,11 +24,14 @@ class ProductReviewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_review)
         //set title
         supportActionBar?.title = getString(R.string.product_review)
-        //set default internal size
-        selectInternalStorage = resources.getString(R.string._64_gb)
+
 
         //deserialize PhoneCheckOut in varible checkoutObj
         checkoutObj = Gson().fromJson(intent.getStringExtra("checkout"),PhoneCheckOut::class.java)
+
+        //set default internal size
+        selectInternalStorage = resources.getString(R.string._64_gb)
+        checkoutObj.internalStorageSize = selectInternalStorage
 
         //find views
         var phoneImageView = findViewById<ImageView>(R.id.phone_image)
