@@ -113,6 +113,8 @@ class OrdersFragment : Fragment() {
             checkoutObj.address = customerModel.address
             checkoutObj.city = customerModel.city
             checkoutObj.postalCode = customerModel.postal
+            checkoutObj.color = productOrder.product!!.phoneColor
+            checkoutObj.internalStorageSize = productOrder.product!!.storageCapacity
 
             checkoutObj.firstName = customerModel.firstname
             checkoutObj.lastName = customerModel.lastname

@@ -73,10 +73,7 @@ class CustomerRepository {
                  var customer = quertSnapshot.toObjects(CustomerModel::class.java)[0]
                 loginCustomer.postValue(customer)
                 return customer
-
-
             }
-
 
             return null
         }

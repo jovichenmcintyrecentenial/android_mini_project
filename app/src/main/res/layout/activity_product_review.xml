@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -15,10 +16,10 @@
         android:id="@+id/phone_image"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/page_margins"
         android:layout_marginBottom="@dimen/bottom_margin_instruction"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+         />
 
 
     <TextView
@@ -76,7 +77,20 @@
             android:id="@+id/opt_64GB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onSelectRadioButton"
             android:text="@string/_64_gb" />
+        <RadioButton
+            android:id="@+id/opt_128GB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onSelectRadioButton"
+            android:text="@string/_128_gb" />
+        <RadioButton
+            android:id="@+id/opt_256GB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onSelectRadioButton"
+            android:text="@string/_256_gb" />
 
     </RadioGroup>
     <LinearLayout

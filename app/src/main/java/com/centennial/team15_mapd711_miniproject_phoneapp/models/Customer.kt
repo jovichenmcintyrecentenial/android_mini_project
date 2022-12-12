@@ -8,6 +8,13 @@ data class CustomerModel(
     var city: String? = null,
     var postal: String? = null,
     var password: String? = null,
-    var id:String = UUID.randomUUID().toString()
-)
+    var id:String? = null
+){
+    //defining a primary key field Id
+    fun idCreate(){
+        if(id == null){
+            id = UUID.randomUUID().toString()
+        }
+    }
+}
 

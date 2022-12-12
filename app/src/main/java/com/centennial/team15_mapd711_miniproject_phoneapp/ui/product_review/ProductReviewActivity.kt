@@ -17,13 +17,15 @@ class ProductReviewActivity : AppCompatActivity() {
     //declare views
     lateinit var  selectColorPhone:String
     lateinit var  checkoutObj: PhoneCheckOut
+    lateinit var selectInternalStorage:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_review)
         //set title
         supportActionBar?.title = getString(R.string.product_review)
-
+        //set default internal size
+        selectInternalStorage = resources.getString(R.string._64_gb)
 
         //deserialize PhoneCheckOut in varible checkoutObj
         checkoutObj = Gson().fromJson(intent.getStringExtra("checkout"),PhoneCheckOut::class.java)
@@ -38,9 +40,10 @@ class ProductReviewActivity : AppCompatActivity() {
         val colors: ArrayList<String> = ArrayList()
         colors.add(checkoutObj.phone.phoneColor!!)
         //load spinner with string array daata
-        ArrayAdapter(
+        ArrayAdapter.createFromResource(
             this,
-            android.R.layout.simple_spinner_item,colors
+            R.array.string_of_phone_colors,
+            android.R.layout.simple_spinner_item
         ).also { adapter ->
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -48,7 +51,7 @@ class ProductReviewActivity : AppCompatActivity() {
             spinner.adapter = adapter
         }
 
-        radioButton.text = checkoutObj.phone.storageCapacity
+//        radioButton.text = checkoutObj.phone.storageCapacity
 
         //add click listener to save select value when user selects a color from spinner
         spinner.onItemSelectedListener = object :
@@ -58,7 +61,8 @@ class ProductReviewActivity : AppCompatActivity() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                selectColorPhone = colors[0]
+                selectColorPhone = resources.getStringArray(R.array.string_of_phone_colors)[position]
+                checkoutObj.color = selectColorPhone
             }
 
         }
@@ -71,6 +75,20 @@ class ProductReviewActivity : AppCompatActivity() {
 
     }
 
+    //handle selecting of radio button options
+    fun onSelectRadioButton(view: View) {
+
+        if(view is RadioButton){
+
+            when(view.id){
+                R.id.opt_64GB -> selectInternalStorage = getString(R.string._64_gb)
+                R.id.opt_128GB -> selectInternalStorage = getString(R.string._128_gb)
+                R.id.opt_256GB -> selectInternalStorage = getString(R.string._256_gb)
+            }
+        }
+        checkoutObj.internalStorageSize = selectInternalStorage
+
+    }
 
     fun onSubmit(view: View) {
         //create new intent to CheckOutActivity

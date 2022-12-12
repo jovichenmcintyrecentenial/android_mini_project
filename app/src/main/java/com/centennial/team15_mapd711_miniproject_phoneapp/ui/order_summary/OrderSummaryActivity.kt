@@ -56,6 +56,10 @@ class OrderSummaryActivity : AppCompatActivity() {
         //deserialize data from intent
         checkoutObj = Gson().fromJson(intent.getStringExtra("checkout"), PhoneCheckOut::class.java)
 
+        //update product information
+        checkoutObj.phone.phoneColor = checkoutObj.color
+        checkoutObj.phone.storageCapacity = checkoutObj.internalStorageSize
+
         //display phone image
         ImageLoader.setImage(getString(R.string.base_url)+checkoutObj.phone.imageUri+".jpg",phoneImage!!)
 
@@ -65,6 +69,8 @@ class OrderSummaryActivity : AppCompatActivity() {
         phoneColor.text = checkoutObj.phone.phoneColor
         internalStorage.text = checkoutObj.phone.storageCapacity
         price.text = checkoutObj.phone.formattedPrice()
+
+
 
         //populate views
         userName.text = checkoutObj.firstName+" "+checkoutObj.lastName
@@ -97,7 +103,7 @@ class OrderSummaryActivity : AppCompatActivity() {
             supportActionBar?.title = getString(R.string.order_details)
 
             //update button to say cancel or on order details state
-            button.text = "Cancel Order"
+            button.text = getString(R.string.cancel_order)
 
             //hide cancel button if order not in Ordered state
             if(checkoutObj.orderModel!!.status != "Ordered"){
@@ -116,7 +122,7 @@ class OrderSummaryActivity : AppCompatActivity() {
                     //date stamp
                     val unixTime = System.currentTimeMillis()
                     var order = OrderModel(it.id, checkoutObj.phone, "Ordered",unixTime)
-
+                    order.custId = it.id
                     //save orderModel data to database
                     orderViewModel.addOrder(this,order)
                 }

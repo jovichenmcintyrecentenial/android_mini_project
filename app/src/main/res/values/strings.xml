@@ -122,5 +122,12 @@
     <string name="first_lastname">First Lastname</string>
     <string name="base_url" translatable="false">https://onlineclassifiedjamaica.com/drawable/</string>
     <string name="order_online">Order Online</string>
-
+    <string name="cancel_order">Cancel Order</string>
+    <string-array name="string_of_phone_colors">
+        <item>Blue</item>
+        <item>Black</item>
+        <item>Silver</item>
+        <item>Gold</item>
+        <item>Red</item>
+    </string-array>
 </resources>

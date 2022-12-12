@@ -88,6 +88,7 @@ class RegisterAcitivy : AppCompatActivity() {
                     postalCode,
                     password
                 )
+                customerModel.idCreate()
                 //use view model to insert data in database
                 registerViewModel.insertCustomerData(this,customerModel)
 
