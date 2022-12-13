@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Phone Cube</string>
+    <string name="app_name">Phone Shop</string>
     <string name="sign_up_text"><u>Register here</u>.</string>
     <string name="my_text">This is an <u>underline</u>.</string>
     <string name="don_t_an_account">Don\'t have an account? </string>

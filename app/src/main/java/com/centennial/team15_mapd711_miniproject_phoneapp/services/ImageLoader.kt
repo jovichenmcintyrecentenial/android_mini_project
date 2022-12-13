@@ -13,6 +13,7 @@ import java.net.URL
 class ImageLoader {
 
     companion object{
+        //static function to download image and set to image view
         fun setImage(url:String,imageView: ImageView) {
             val url = URL(url)
             CoroutineScope(Dispatchers.IO).launch {

@@ -83,7 +83,6 @@ class ProductsFragment : Fragment() {
 
         var context = context
 
-
         // create new views
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             // inflates the card_view_design view
@@ -93,8 +92,6 @@ class ProductsFragment : Fragment() {
 
             return ViewHolder(view)
         }
-
-
 
         // binds the list items to a view
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {

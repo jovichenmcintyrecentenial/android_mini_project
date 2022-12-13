@@ -19,10 +19,11 @@
 
 
     <ImageView
+        android:layout_gravity="center"
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_marginBottom="@dimen/page_margin"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         app:srcCompat="@drawable/ic_logo" />
 
     <TextView
@@ -78,7 +79,7 @@
                 android:linksClickable="false"
                 android:selectAllOnFocus="false"
                 android:text="@string/sign_up_text"
-                android:textColor="#328C28"
+                android:textColor="#BD6D27"
                 android:textSize="17sp" />
 
             <Button
